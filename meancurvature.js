@@ -17,25 +17,28 @@ function meanCurvature (cells, positions) {
   var curvature = new Array(numVerts)
   for (i = 0; i < numVerts; ++i) {
     var p = positions[i]
-    x = p[0]
-    y = p[1]
-    z = p[2]
+    x[i] = p[0]
+    y[i] = p[1]
+    z[i] = p[2]
     curvature[i] = 0
   }
 
   laplacian.apply(x, curvature)
   for (i = 0; i < numVerts; ++i) {
     curvature[i] = Math.pow(curvature[i], 2)
+    x[i] = 0
   }
 
   laplacian.apply(y, x)
   for (i = 0; i < numVerts; ++i) {
     curvature[i] += Math.pow(x[i], 2)
+    x[i] = 0
   }
 
   laplacian.apply(z, x)
   for (i = 0; i < numVerts; ++i) {
     curvature[i] += Math.pow(x[i], 2)
+    x[i] = 0
   }
 
   for (i = 0; i < numVerts; ++i) {

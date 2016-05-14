@@ -5,7 +5,7 @@
   "main": "meancurvature.js",
   "dependencies": {
     "mesh-laplacian": "^1.0.0",
-    "csr-matrix": "^1.0.0"
+    "csr-matrix": "^2.0.0"
   },
   "devDependencies": {},
   "scripts": {
